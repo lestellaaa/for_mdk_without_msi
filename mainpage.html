@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Книжная Полка</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #C3B091;
+      padding: 15px 30px;
+    }
+
+    .shop-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #504A38;
+    }
+
+    .search-bar {
+      width: 300px;
+      height: 30px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 50px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      background-color: #ffffff;
+      padding: 10px 30px;
+    }
+
+    nav a img {
+      height: 30px;
+      width: 30px;
+      margin-left: 15px;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .description-block {
+      background-color: #C3B091;
+      padding: 20px;
+      border-radius: 50px;
+      color: #504A38;
+      margin-bottom: 20px;
+    }
+
+    .book-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .book-item {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #C3B091;
+      padding: 15px 30px;
+    }
+
+    .popup, .survey {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .popup button, .survey button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .popup button.yes {
+      background-color: brown;
+      color: white;
+    }
+
+    .popup button.no {
+      background-color: white;
+      border: 1px solid black;
+    }
+
+    .survey {
+      display: none;
+      text-align: left;
+    }
+
+    .survey label {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div><img src="../книга.jpg" style="width:50px; height:50px;"></div>
+    <div>
+      <span class="shop-name">КНИЖНАЯ ПОЛКА</span>
+      <input type="text" class="search-bar" placeholder="Поиск...">
+    </div>
+    <div><img src="../книга.jpg" style="width:50px; height:50px;"></div>
+  </header>
+
+  <nav>
+    <a href="#"><img src="../сердце не скрин.png" alt="Избранное"></a>
+    <a href="#"><img src="../корзина не скрин.png" alt="Корзина"></a>
+    <a href="#"><img src="../профиль не скрин.png" alt="Профиль"></a>
+  </nav>
+
+  <main>
+    <div class="description-block">
+      <p>Описание книжного магазина</p>
+    </div>
+
+    <div class="book-list">
+      <!-- Примеры книг -->
+      <div class="book-item">
+        <img src="../книга.jpg" alt="Обложка" style="width:100%; height: 350px; object-fit:cover;">
+        <p><strong>Цена:</strong> 500 руб.</p>
+        <p><strong>Название:</strong> Название книги</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div>Местоположение</div>
+    <div>
+      <a href="https://t.me/example">Telegram</a> |
+      <a href="https://vk.com/example">VK</a> |
+      <a href="https://tiktok.com/@example">TikTok</a>
+    </div>
+    <div><a href="mailto:example@example.com">Обратная связь</a></div>
+    <div>Контакты</div>
+  </footer>
+
+  <!-- Всплывающее окно -->
+  <div class="popup" id="popup">
+    <p>Хотите пройти опрос о нашем сайте?</p>
+    <button class="yes" onclick="showSurvey()">Да</button>
+    <button class="no" onclick="hidePopup()">Нет</button>
+  </div>
+
+  <!-- Опрос -->
+  <div class="survey" id="survey">
+    <h2>Опрос о сайте</h2>
+    <form action="https://formspree.io/f/mpwporoa" method="POST" id="surveyForm">
+      <label>1. Нравится ли вам оформление сайта?
+        <select name="question1" required>
+          <option value="Да">Да</option>
+          <option value="Нет">Нет</option>
+        </select>
+      </label>
+      <label>2. Нравятся ли вам книги, которые мы предлагаем?
+        <select name="question2" required>
+          <option value="Да">Да</option>
+          <option value="Нет">Нет</option>
+        </select>
+      </label>
+      <label>3. Нравятся ли вам цены на нашем сайте?
+        <select name="question3" required>
+          <option value="Да">Да</option>
+          <option value="Нет">Нет</option>
+        </select>
+      </label>
+      <label>4. Ваши пожелания:
+        <textarea name="question4" rows="3" maxlength="1024" required></textarea>
+      </label>
+      <label>5. Ваши жалобы:
+        <textarea name="question5" rows="3" maxlength="1024" required></textarea>
+      </label>
+      <label>6. Для чего вы используете сайт?
+        <textarea name="question6" rows="3" maxlength="1024" required></textarea>
+      </label>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+
+  <!-- Затемнение -->
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+    // Показать всплывающее
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+
+    function hidePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    function showSurvey() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('survey').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

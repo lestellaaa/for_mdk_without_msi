@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Избранное - Книжная Полка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;}
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f8f9fa;
+            padding: 15px 30px;}
+
+        .logo-left, .logo-right {
+            width: 50px;
+            height: 50px;
+            background-image: url('book-icon.png'); /* Замените на путь к вашему изображению */
+            background-size: cover;
+            background-repeat: no-repeat;}
+
+        .shop-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto;}
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 10px 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);}
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;}
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;}
+
+        .back-link svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;}
+
+        main {padding: 20px;}
+
+        .favorites-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;}
+
+        .favorite-item {
+            display: flex;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;}
+
+        .favorite-item img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+            cursor: pointer;
+            position: relative;}
+
+        .book-actions {
+            top: 5px;
+            right: 5px;}
+
+        .book-actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;}
+
+        .book-actions button.cart-btn {
+            color: #007bff;}
+
+        .book-actions button.favorite-btn {
+            color: #ccc;}
+
+        .book-actions button.favorite-btn.active {
+            color: red;}
+
+        .item-details {
+            flex: 1;}
+
+        .item-description {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            text-decoration: underline;
+            color: #007bff;}
+
+        .formats-price {
+            display: flex;
+            justify-content: space-between;}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header style="background-color: #C3B091;">
+        <div class="logo-left">
+            <img src="../книга.jpg" style="height: 50px; width:50px; ">
+        </div>
+        <div>
+            <span class="shop-name" style="color: #504A38;
+            font-family: var(--font-family);
+            text-transform: capitalize;">КНИЖНАЯ ПОЛКА</span>
+        </div>
+        <div class="logo-right">
+            <img src="../книга.jpg" style="height: 50px; width:50px; ">
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="mainpage.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/></svg>
+            Назад</a>
+        <div>
+            <a href="izbranoe.html">
+                <img src="../сердце не скрин.png" style="height: 30px; width:30px;"></a>
+            <a href="bascetpage.html">
+                <img src="../корзина не скрин.png" style="height: 30px; width:30px;"></a>
+            <a href="#">
+                <img src="../профиль не скрин.png" style="height: 34px; width:36px;"></a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <h1 class="cart-title" style="text-align: left; color: #724A38">
+            <img src="../сердце не скрин.png" style="height: 30px; width:27px;">Избранное</h1>
+
+        <!-- Favorite Items -->
+        <div class="favorite-item">
+            <img src="../книга.jpg" alt="Обложка книги" onclick="openBookCard(this)">
+            <div class="book-actions">
+                <button class="cart-btn" onclick="toggleCart(this)">🛒</button>
+                <button class="favorite-btn" onclick="toggleFavorite(this)">❤️</button>
+            </div>
+            <div class="item-details">
+                <p class="item-description" onclick="openBookCard(this)">Описание</p>
+                <div class="formats-price">
+                    <span>Доступные форматы: PDF, ePub</span>
+                    <span>Цена: 500 руб.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="favorite-item">
+            <img src="../книга.jpg" alt="Обложка книги" onclick="openBookCard(this)">
+            <div class="book-actions">
+                <button class="cart-btn" onclick="toggleCart(this)">🛒</button>
+                <button class="favorite-btn" onclick="toggleFavorite(this)">❤️</button>
+            </div>
+            <div class="item-details">
+                <p class="item-description" onclick="openBookCard(this)">Описание</p>
+                <div class="formats-price">
+                    <span>Доступные форматы: PDF, ePub</span>
+                    <span>Цена: 600 руб.</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Функция для открытия карточки книги
+        function openBookCard(element) {
+            alert("Открыта карточка книги");
+            // Здесь можно добавить логику для перехода на страницу с детальной информацией о книге
+        }
+
+        // Функция для добавления/удаления книги в корзину
+        function toggleCart(button) {
+            if (button.textContent === '🛒') {
+                button.textContent = '❌'; // Изменяем иконку на "удалить"
+                alert("Книга добавлена в корзину");
+            } else {
+                button.textContent = '🛒'; // Возвращаем исходную иконку
+                alert("Книга удалена из корзины");
+            }
+        }
+
+        // Функция для добавления/удаления книги в избранное
+        function toggleFavorite(button) {
+            button.classList.toggle('active');
+            if (button.classList.contains('active')) {
+                alert("Книга добавлена в избранное");
+            } else {
+                alert("Книга удалена из избранного");
+            }
+        }
+    </script>
+</body>
+</html>

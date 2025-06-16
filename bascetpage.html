@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Книжная Полка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;}
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f8f9fa;
+            padding: 15px 30px;}
+
+        .logo-left, .logo-right {
+            width: 50px;
+            height: 50px;
+            background-image: url('book-icon.png'); /* Замените на путь к вашему изображению */
+            background-size: cover;
+            background-repeat: no-repeat;}
+
+        .shop-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto;}
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 10px 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);}
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;}
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;}
+
+        .back-link svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;}
+
+        main {
+            padding: 20px;}
+
+        .cart-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;}
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;}
+
+        .cart-item img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+            cursor: pointer;}
+
+        .item-details {
+            flex: 1;}
+
+        .item-description {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            text-decoration: underline;
+            color: #007bff;}
+
+        .formats-price {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;}
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;}
+
+        .quantity-control button {
+            background-color: transparent;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;}
+
+        .quantity-control span {
+            margin: 0 10px;
+            font-size: 16px;
+            font-weight: bold;}
+
+        .checkout-button {
+            display: inline-block;
+            margin-left: 43%;
+            background-color: #C3B091;
+            color: #724A38;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;}
+
+        .checkout-button:hover {
+            background-color: #fae4c0;}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header style="background-color: #C3B091;">
+        <div class="logo-left">
+            <img src="../книга.jpg" style="height: 50px; width:50px; ">
+        </div>
+        <div>
+            <span class="shop-name" style="color: #504A38;
+            font-family: var(--font-family);
+            text-transform: capitalize;">КНИЖНАЯ ПОЛКА</span>
+        </div>
+        <div class="logo-right">
+            <img src="../книга.jpg" style="height: 50px; width:50px; ">
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="mainpage.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/></svg>
+            Назад</a>
+        <div>
+            <a href="izbranoe.html">
+                <img src="../сердце не скрин.png" style="height: 30px; width:30px;"></a>
+            <a href="bascetpage.html">
+                <img src="../корзина не скрин.png" style="height: 30px; width:30px;"></a>
+            <a href="#">
+                <img src="../профиль не скрин.png" style="height: 34px; width:36px;"></a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <h1 class="cart-title" style="text-align: left; color: #724A38">
+            <img src="../корзина не скрин.png" style="height: 25px; width:23px;">Корзина</h1>
+
+        <!-- Cart Items -->
+        <div class="cart-item">
+            <img src="../книга.jpg" alt="Обложка книги" onclick="openBookCard(this)" style="cursor: pointer;">
+            <div class="item-details">
+                <p class="item-description" onclick="openBookCard(this)">Описание</p>
+                <div class="formats-price">
+                    <span>Доступные форматы: PDF, ePub</span>
+                    <span id="price-per-unit">Цена за штуку: 500 руб.</span>
+                </div>
+                <div class="quantity-control" style="float:right; border-radius: 50px;">
+                    <button onclick="changeQuantity(this, -1)">-</button>
+                    <span id="quantity">1</span>
+                    <button onclick="changeQuantity(this, 1)">+</button>
+                </div>
+                <div>
+                    <strong style="float:left; padding-top: 5%;">Общая цена: <span id="total-price">500</span> руб.</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Button -->
+        <a href="checkout.html" class="checkout-button" onclick="return isUserLoggedIn()">Оформление заказа</a>
+    </main>
+
+    <script>
+        // Функция для открытия карточки книги
+        function openBookCard(element) {
+            alert("Открыта карточка книги");
+            // Здесь можно добавить логику для перехода на страницу с детальной информацией о книге
+        }
+
+        // Функция для изменения количества книг и общей цены
+        function changeQuantity(button, value) {
+            const quantityElement = button.closest('.quantity-control').parentElement.querySelector('#quantity');
+            const totalPriceElement = button.closest('.item-details').querySelector('#total-price');
+            const pricePerUnit = parseInt(button.closest('.item-details').querySelector('#price-per-unit').textContent.split(':')[1].trim().replace('руб.', ''));
+
+            let currentQuantity = parseInt(quantityElement.textContent);
+            currentQuantity += value;
+
+            if (currentQuantity < 1) currentQuantity = 1; // Минимальное количество книг - 1
+
+            quantityElement.textContent = currentQuantity;
+            totalPriceElement.textContent = currentQuantity * pricePerUnit;
+        }
+
+        // Функция для проверки авторизации пользователя
+        function isUserLoggedIn() {
+            const isLoggedIn = confirm("Вы авторизованы? Если нет, вы не сможете оформить заказ.");
+            return isLoggedIn;
+        }
+    </script>
+
+</body>
+</html>

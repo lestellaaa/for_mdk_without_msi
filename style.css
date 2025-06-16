@@ -1,0 +1,20 @@
+.con_center_up{
+    background-color: blue;
+    display: flex;
+    height: 100px;
+    width: 100%;
+    position: absolute;}
+.c{border: 5px solid aliceblue; position: absolute;}
+.con{display: flex;padding-top: 40px;margin-left: 20%;}
+h1{color: yellow; font-size: x-large; position: absolute; margin-left: 40%; text-align: center;}
+h2{color: aliceblue;font-size: xx-large; margin-left: 64%; text-align: center;}
+h3{color: aqua;
+    font-size: large;
+    margin-left: 20%;
+    padding-top: 100px;
+    position: absolute;}
+h4{color: gray;font-size: medium;padding-top: 80px;}
+h5{color: rgb(35, 74, 160);font-size: large;margin-left: 2%;padding-top: 70px;}
+h6{color: red;font-size: large;margin-left: 20%;}
+.h7{color: black;font-size: medium;margin-left: 30%;margin-right: 500px;}
+.h8{color: aqua;float: right;margin-right: 300px;}

@@ -1,0 +1,20 @@
+h1{font-size: xx-large;
+    color: aliceblue;
+    text-align: center;}
+.c1{padding-top: 60px;
+    background-color: aliceblue;
+    margin-left: 10%;
+    margin-right: 10%;
+    position: absolute;
+    box-shadow: 0px 0px 100px;
+    border: 2px solid black;
+    width: 80%;
+    height: 100%}
+.C2{background-color: lightgreen;}
+h2{color: greenyellow; font-size: x-large;text-align: center;}
+h3{color: black;}
+h4{color: brown; font-size: large; border: 2px dashed green;}
+h6{color: black;}
+h5{color: brown; font-size: large;}
+.c3{background-color: yellow; float:right; display: inline; height: 250px;
+    width: 150px;}
